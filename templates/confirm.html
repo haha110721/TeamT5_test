@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>公車追蹤註冊頁</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 120px;
+        }
+
+        table {
+            margin: 0 auto;
+            border: 3px dashed #bbcfe5;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        td {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>感謝填寫，以下是您提供的訊息</h3>
+    <br>
+    <table align="center">
+        <tr>
+            <th>使用者名稱：</th>
+            <td>{{ session['user_name'] }}</td>
+        </tr>
+        <tr>
+            <th>欲通知信箱：</th>
+            <td>{{ session['user_email'] }}</td>
+        </tr>
+        <tr>
+            <th>追蹤之公車：</th>
+            <td>{{ session['track_bus'] }}</td>
+        </tr>
+        <tr>
+            <th>去返程：</th>
+            <td>
+                {% if session['bus_direction'] == '0' %}
+                    去程
+                {% elif session['bus_direction'] == '1' %}
+                    返程
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>追蹤之站點：</th>
+            <td>
+                {{ session['track_stop'] }}
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

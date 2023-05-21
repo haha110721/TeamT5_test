@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>首頁</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            margin-top: 50px;
+        }
+
+        .form-container input[type="text"],
+
+        .form-container input[type="radio"],
+        
+        .form-container button {
+            margin: 5px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #70a2e3;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #1a55a2;
+        }
+
+        .form-linkcontainer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: transparent;
+            border-radius: 5px;
+        }
+
+        .link-container {
+            margin-top: 20px;
+        }
+
+        .link-container a {
+            text-decoration: none;
+            background-color: #f3a28b;
+            color: rgb(33, 32, 32);
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        .link-container a:hover {
+            background-color: #ed623b;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>台北公車查詢</h1>
+
+    <div class="form-container">
+        <form method="POST" action="/bustime">
+            <div class="form-group">
+                <label for="bus">查詢公車名稱：</label>
+                <select name="bus" id="bus">
+                    {% for bus in bus_choices %}
+                        <option value="{{ bus[0] }}">{{ bus[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                去返程：
+                <input type="radio" name="busdirection" value="0">去程
+                <input type="radio" name="busdirection" value="1">返程
+            </div>
+
+            <div class="form-group">
+                <button>查詢</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-linkcontainer">
+        <hr>
+        <br>
+        <div class="link-container">
+            <a href="/subscribe">前往追蹤</a>
+        </div>
+    </div>
+
+</body>
+</html>
